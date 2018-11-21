@@ -1,0 +1,40 @@
+
+<div>
+    <h5>Write a review for  {{ restaurant.name }} </h5>
+</div>
+<form (submit)="onSubmitAddReview()">
+
+    <div class='form-group row'>
+        Your name: <input style='margin-left: 10px;' type='text' name='newReview.customer' [(ngModel)]='newReview.customer' />
+    </div>
+    <div class='form-group row'>
+        Stars:
+        <select style='margin-left: 10px;' name='newReview.stars' [(ngModel)]='newReview.stars'>
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <option value="4">4 stars</option>
+            <option value="5">5 stars</option>
+        </select>
+
+        <!-- Stars: <input style='margin-left: 10px;' type='text' name='newReview.stars' [(ngModel)]='newReview.stars' /> -->
+    </div>
+    <div class='form-group row'>
+        Your review: <input style='margin-left: 10px;' type='text' name='newReview.review' [(ngModel)]='newReview.review'>
+    </div>
+
+    <div class='form-group row'>
+        <input class='btn btn-primary' type='submit' value='Review' />
+        <a routerLink='/restaurants' routerLinkActive='active' class='btn btn-secondary'>Cancel</a>
+    </div>
+    <div *ngIf="errors.errors.customer">
+        {{ errors.errors.customer.message }}
+    </div>
+    <div *ngIf='errors.errors.stars'>
+        {{ errors.errors.stars.message }}
+    </div>
+    <div *ngIf="errors.errors.review">
+        {{ errors.errors.review.message }}
+    </div>
+    
+</form>

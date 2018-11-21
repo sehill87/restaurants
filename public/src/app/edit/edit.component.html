@@ -1,0 +1,24 @@
+<div class="container jumbotron" style="text-align:left">
+  <h5>Edit a restaurant</h5>
+  <form *ngIf='editRestaurant._id' (submit)="onSubmitEditRestaurant()">
+    <div class='form-group row'>
+      Restaurant Name: <input style='margin-left: 10px;' class='form-control mx-sm-3' type='text' name='editRestaurant.name'
+        [(ngModel)]='editRestaurant.name' />
+    </div>
+    <div class='form-group row'>
+      Cuisine: <input style='margin-left: 10px;' class='form-control mx-sm-3' type='text' name='editRestaurant.cuisine'
+        [(ngModel)]='editRestaurant.cuisine' />
+    </div>
+
+    <div class='form-group row'>
+      <input class='btn btn-primary' type='submit' value='Update' />
+      <a (click)="tellParentToCloseForm()" routerLinkActive='active' class='btn btn-warning'>Cancel</a>
+    </div>
+    <div *ngIf="errors.errors.name">
+        {{ errors.errors.name.message }}
+    </div>
+    <div *ngIf="errors.errors.cuisine">
+        {{ errors.errors.cuisine.message }}
+    </div>
+  </form>
+</div>

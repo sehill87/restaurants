@@ -1,0 +1,17 @@
+<h5>Reviews for {{ restaurant.name }}</h5>
+<a [routerLink]="['/restaurants', restaurant._id ,'review']" routerLinkActive='active' class='btn btn-primary'>New review</a>
+<a routerLink='/restaurants' routerLinkActive='active' class='btn btn-warning'>Go back!</a>
+<table class='table table-striped'>
+  <thead class='thead-dark'>
+    <tr>
+      <th scope='col'>Customer</th>
+      <th scope='col'>Stars</th>
+      <th scope='col'>Description</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let review of reviews">
+    <td>{{ review.customer }}</td>
+    <td>{{ review.stars }}</td>
+    <td>{{ review.review }}</td>
+  </tbody>
+</table>

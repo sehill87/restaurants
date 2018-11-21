@@ -1,0 +1,60 @@
+<table class='table table-striped'>
+        <thead class='thead-dark'>
+          <tr>
+            <th scope='col'>Restaurant</th>
+            <th scope='col'>Cuisine</th>
+            <th scope='col'>Actions available</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let restaurant of restaurants">
+          <td>{{ restaurant.name }}</td>
+          <td>{{ restaurant.cuisine }}</td>
+          <td>
+            <a class='btn btn-primary btn-sm' href='/restaurants/reviews'>Read Reviews</a>
+            <button style='margin-left: 15px;' class='btn btn-success btn-sm' (click)="onEditRestaurant(restaurant._id, restaurant.name, restaurant.cuisine)">Update</button>
+            <button style='margin-left: 15px;' class='btn btn-warning btn-sm' (click)="deleteRestaurantFromService(restaurant._id)">Delete</button>
+          </td>
+        </tbody>
+      </table>
+      
+    </div>
+    
+    
+    <div class="container jumbotron" style="text-align:center">
+      <div>
+        <h3>Let's Eat!</h3>
+        <h5>Register a restaurant</h5>
+      </div>
+      <form (submit)="onSubmitAddRestaurant()">
+    
+        <div class='form-group row'>
+          Restaurant name: <input style='margin-left: 10px;' type='text' name='newRestaurant.name' [(ngModel)]='newRestaurant.name' />
+        </div>
+        <div class='form-group row'>
+          Cuisine: <input style='margin-left: 10px;' type='text' name='newRestaurant.cuisine' [(ngModel)]='newRestaurant.cuisine' />
+        </div>
+        <div class='form-group row'>
+          <input class='btn btn-primary' type='submit' value='Register' />
+          <a href='/restaurants' class='btn btn-secondary'>Cancel</a>
+        </div>
+    
+      </form>
+    </div>
+    <div class="container jumbotron" style="text-align:center">
+      <h3>Let's eat:</h3>
+      <h5>Edit a restaurant</h5>
+      <form *ngIf='editRestaurant._id' (submit)="onSubmitEditRestaurant()">
+        <div class='form-group row'>
+          Title: <input style='margin-left: 10px;' class='form-control mx-sm-3' type='text' name='editRestaurant.name'
+            [(ngModel)]='editRestaurant.name' />
+        </div>
+        <div class='form-group row'>
+          Description: <input style='margin-left: 10px;' class='form-control mx-sm-3' type='text' name='editRestaurant.cuisine'
+            [(ngModel)]='editRestaurant.cuisine' />
+        </div>
+        
+        <div class='form-group row'>
+          <input type='submit' value='Update' />
+        </div>
+      </form>
+    </div>

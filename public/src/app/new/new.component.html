@@ -1,0 +1,22 @@
+<div>
+    <h5>Register a restaurant</h5>
+</div>
+<form (submit)="onSubmitAddRestaurant()">
+
+    <div class='form-group row'>
+        Restaurant name: <input style='margin-left: 10px;' type='text' name='newRestaurant.name' [(ngModel)]='newRestaurant.name' />
+    </div>
+    <div class='form-group row'>
+        Cuisine: <input style='margin-left: 10px;' type='text' name='newRestaurant.cuisine' [(ngModel)]='newRestaurant.cuisine' />
+    </div>
+    <div class='form-group row'>
+        <input class='btn btn-primary' type='submit' value='Register' />
+        <a routerLink='/restaurants' routerLinkActive='active' class='btn btn-secondary'>Cancel</a>
+    </div>
+    <div *ngIf="errors.errors.name">
+        {{ errors.errors.name.message }}
+    </div>
+    <div *ngIf="errors.errors.cuisine">
+        {{ errors.errors.cuisine.message }}
+    </div>
+</form>
